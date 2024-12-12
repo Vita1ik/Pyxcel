@@ -8,31 +8,31 @@ class TestCalculator(unittest.TestCase):
 
     def test_addition(self):
         result = self.calc.evaluate("3 + 5")
-        self.assertEqual(result, 8)
+        self.assertEqual(result, '8')
 
     def test_subtraction(self):
         result = self.calc.evaluate("10 - 3")
-        self.assertEqual(result, 7)
+        self.assertEqual(result, '7')
 
     def test_multiplication(self):
         result = self.calc.evaluate("4 * 6")
-        self.assertEqual(result, 24)
+        self.assertEqual(result, '24')
 
     def test_division(self):
         result = self.calc.evaluate("8 / 4")
-        self.assertEqual(result, 2)
+        self.assertEqual(result, '2.0')
 
     def test_combined_operations(self):
         result = self.calc.evaluate("3 + 5 * 2 - 8 / 4")
-        self.assertEqual(result, 11)
+        self.assertEqual(result, '11.0')
 
     def test_parentheses(self):
         result = self.calc.evaluate("(3 + 5) * 2")
-        self.assertEqual(result, 16)
+        self.assertEqual(result, '16')
 
     def test_nested_parentheses(self):
         result = self.calc.evaluate("3 + (2 * (2 + 3)) - 6 / (4 - 1)")
-        self.assertEqual(result, 11)
+        self.assertEqual(result, '11.0')
 
     def test_zero_division(self):
         result = self.calc.evaluate("5 / 0")

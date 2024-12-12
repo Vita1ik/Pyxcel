@@ -27,11 +27,7 @@ class Cell:
             select_query = f"SELECT address, row, column, data, text FROM cells WHERE address IN ({placeholders});"
 
             cursor = connection.cursor()
-
-            # Pass the addresses as a tuple (this unpacks the list correctly)
             cursor.execute(select_query, tuple(addresses))
-
-            # Fetch the results
             rows = cursor.fetchall()
 
             result = []
