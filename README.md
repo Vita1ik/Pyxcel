@@ -1,4 +1,4 @@
-# Project Name
+# Pyxcel
 
 A brief description of the project: what it is and the main problems it solves.
 
@@ -12,9 +12,9 @@ A brief description of the project: what it is and the main problems it solves.
 - [Contact Information](#contact-information)
 
 ## About the Project
-Pyxcel is an implementation of Excel created for educational purposes.
-Created using Qt library and python language.
-Created base on architectural template MV(Model/View).
+Pyxcel is an educational implementation of Excel, developed using Python and the Qt framework. It is designed to help users understand the core functionalities of spreadsheet software while being built on the Model-View architectural pattern (MV). This approach ensures a clean separation between data (Model) and user interface (View), promoting flexibility and scalability for future enhancements.
+
+![Project Screenshot](assets/screenshot.png)
 
 ## Features
 
@@ -63,7 +63,7 @@ Instructions for setting up the project on a local machine:
    ```bash
    python seeds.py
    ```
-   
+
 ## Usage
 
 Instructions for running and using the project:
