@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QApplication, QTableWidget, QTableWidgetItem, QWidge
 from PyQt5.QtCore import Qt
 from contextlib import contextmanager
 from models.cell import Cell
+from modules.expression_evaluator import ExpressionEvaluator
 
 class ExcelTable(QTableWidget):
     CELL_ROW_VALUE = 'row_value'
@@ -35,6 +36,7 @@ class ExcelTable(QTableWidget):
                         text = data[self.CELL_CALCULATED_VALUE]
 
                     list_data.append((calculated_value, text, address))
+        print(list_data)
         Cell.update_all(list_data)
 
     def on_item_selection_changed(self):
@@ -53,13 +55,19 @@ class ExcelTable(QTableWidget):
 
     def on_item_changed(self, item):
         row_value = item.text()
+        address = self.__cell_address(item)
         print('on_item_changed')
         if row_value and row_value[0] == '=':
-            calculated_value = eval(row_value[1:])
+            calculated_value = ExpressionEvaluator(address).evaluate(row_value[1:])
         else:
             calculated_value = row_value
+
+        Cell.update((row_value, calculated_value, address))
+
         self.__update_cell_content(item, row_value, calculated_value)
         self.__change_cell_content(self.CELL_ROW_VALUE, self.current_editing_cell)
+        with self.block_signals():
+            self.__import_data()
 
     def __cells_address(self, cells):
         if cells:
