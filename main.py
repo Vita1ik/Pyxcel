@@ -26,7 +26,7 @@ layout.addWidget(table)
 
 # Set up the window and show it
 window.setLayout(layout)
-window.setWindowTitle("Table and Textbox Example")
+window.setWindowTitle('Pyxcel')
 window.resize(800, 600)
 window.show()
 

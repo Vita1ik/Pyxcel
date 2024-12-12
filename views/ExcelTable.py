@@ -36,7 +36,6 @@ class ExcelTable(QTableWidget):
                         text = data[self.CELL_CALCULATED_VALUE]
 
                     list_data.append((calculated_value, text, address))
-        print(list_data)
         Cell.update_all(list_data)
 
     def on_item_selection_changed(self):
@@ -56,7 +55,6 @@ class ExcelTable(QTableWidget):
     def on_item_changed(self, item):
         row_value = item.text()
         address = self.__cell_address(item)
-        print('on_item_changed')
         if row_value and row_value[0] == '=':
             calculated_value = ExpressionEvaluator(address).evaluate(row_value[1:])
         else:
